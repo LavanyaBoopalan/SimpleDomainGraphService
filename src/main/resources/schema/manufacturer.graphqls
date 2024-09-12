@@ -1,0 +1,30 @@
+extend type QueryResolver {
+    manufacturers: [Manufacturer]
+    manufacturer(id: ID!): Manufacturer!
+}
+
+extend type MutationResolver {
+    createManufacturer(manufacturer: ManufaturerInput!): Manufacturer
+}
+
+input ManufaturerInput {
+    name: String!
+    website: String!
+    phone: String!
+    street: String!
+    city: String!
+    state: String!
+    country: String!
+}
+
+type Manufacturer {
+    id: ID!
+    name: String!
+    website: String!
+    phone: String!
+    street: String!
+    city: String!
+    state: String!
+    country: String!
+    equipments: [Equipment]
+}

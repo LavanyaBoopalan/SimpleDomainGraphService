@@ -1,0 +1,24 @@
+extend type QueryResolver {
+    purchaseOrders: [PurchaseOrder]
+    purchaseOrder(id: ID!): PurchaseOrder!
+}
+
+extend type MutationResolver {
+    createPurchaseOrder(purchaseOrder: PurchaseOrderInput!): PurchaseOrder
+}
+
+input PurchaseOrderInput {
+    companyName: String!
+    orderDate: String!
+    price: Float!
+    shipmentId: Int!
+}
+
+type PurchaseOrder {
+    id: ID!
+    companyName: String!
+    orderDate: String!
+    price: Float!
+    shipmentId: Int!
+    equipments: [Equipment]
+}

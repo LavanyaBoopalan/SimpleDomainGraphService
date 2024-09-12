@@ -1,0 +1,30 @@
+type QueryResolver {
+    equipments: [Equipment]
+    equipment(id: ID!): Equipment!
+}
+
+type MutationResolver {
+    createEquipment(equipment: EquipmentInput!): Equipment
+}
+
+input EquipmentInput {
+    name: String!
+    price: Float!
+    qualityPassed: Boolean!
+    manufacturerId: Int!
+    purchaseOrderId: Int!
+}
+
+type Equipment {
+    id: ID!
+    name: String!
+    price: Float!
+    qualityPassed: Boolean!
+    manufacturer: Manufacturer
+    purchaseOrder: PurchaseOrder
+}
+
+schema {
+    query: QueryResolver
+    mutation: MutationResolver
+}
